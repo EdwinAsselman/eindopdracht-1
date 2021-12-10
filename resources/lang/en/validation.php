@@ -139,9 +139,23 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'Voer een gebruikersnaam in.',
+            'max' => 'Uw gebruikersnaam mag niet meer dan 255 letters bevatten.'
         ],
+
+        'email' => [
+            'required' => 'Voer u emailadres in.',
+            'email' => 'Voer een geldig emailadres in.',
+            'max' => 'Uw emailadres mag niet meer dan 255 letters bevatten.',
+            'unique' => 'Dit emailadres is al in gebruik.'
+        ],
+
+        'password' => [
+            'required' => 'Voer een wachtwoord in.',
+            'min' => 'Uw wachtwoord moet minstens 8 letters bevatten.',
+            
+        ]
     ],
 
     /*
