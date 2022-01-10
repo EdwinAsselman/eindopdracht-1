@@ -1,0 +1,1 @@
+<a {{ $attributes->merge([ 'class' => 'appearance-none border border-gray-400 rounded-md hover:bg-gray-600 bg-gray-500 text-white p-2 cursor-pointer' ]) }} type="submit">{{ $slot }}</a>
