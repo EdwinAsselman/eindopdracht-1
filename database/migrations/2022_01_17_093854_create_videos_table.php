@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateYoutubeVideosTable extends Migration
+class CreateVideosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateYoutubeVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('youtube_videos', function (Blueprint $table) {
-            $table->id();
+        Schema::create('videos', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->string('url')->nullable();
         });
     }
@@ -26,6 +26,6 @@ class CreateYoutubeVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('youtube_videos');
+        Schema::dropIfExists('videos');
     }
 }

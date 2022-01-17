@@ -71,10 +71,17 @@ class BandList extends Component
      */
     public function deleteSelected ()
     {
+        // Hide delete modal.
         $this->showDeleteModal = false;
 
+        // Remove related content.
+        $this->selected->users()->sync([]);
+        $this->selected->videos()->sync([]);
+
+        // Delete the selected band.
         $this->selected->delete();
 
+        // Notify the user the band got deleted.
         $this->dispatchBrowserEvent('message', [ 'message' => 'Band is verwijderd!' ]);
     }
 

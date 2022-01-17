@@ -41,13 +41,13 @@
             </span>
 
             <div class="flex">
-                <x-input.text class="w-full" name="video-0" wire:model="videos.0.url" :error="$errors->first('videos.0.url')" />
+                <x-input.text class="w-full" name="video-0" wire:model="videos.0" :error="$errors->first('videos.0')" />
             </div>
             <div class="flex">
-                <x-input.text class="w-full" name="video-1" wire:model="videos.1.url" :error="$errors->first('videos.1.url')" />
+                <x-input.text class="w-full" name="video-1" wire:model="videos.1" :error="$errors->first('videos.1')" />
             </div>
             <div class="flex">
-                <x-input.text class="w-full" name="video-2" wire:model="videos.2.url" :error="$errors->first('videos.2.url')" />
+                <x-input.text class="w-full" name="video-2" wire:model="videos.2" :error="$errors->first('videos.2')" />
             </div>
         </x-input.group>
 

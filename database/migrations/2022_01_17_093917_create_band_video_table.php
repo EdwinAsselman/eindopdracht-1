@@ -14,9 +14,8 @@ class CreateBandVideoTable extends Migration
     public function up()
     {
         Schema::create('band_video', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('band_id')->constrained();
-            $table->foreignId('youtube_video_id')->constrained();
+            $table->foreignUuid('video_id')->constrained();
         });
     }
 

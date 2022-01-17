@@ -18,7 +18,6 @@ class BandForm extends Component
     public Band $band;
 
     public $logo;
-    public $oldLogo;
 
     public $videos = [];
 
@@ -35,7 +34,7 @@ class BandForm extends Component
             'band.description' => 'nullable|max:2000',
             'band.logo' => 'nullable',
             'logo' => 'required|max:2048',
-            'videos.*.url' => 'nullable|min:11|max:11'
+            'videos.*' => 'nullable'
         ];
     }
 
@@ -71,6 +70,25 @@ class BandForm extends Component
         $this->band->logo
             ? $this->logo = $this->band->logo
             : null;
+
+        $this->videos = $this->band->videos->pluck('url');
+    }
+
+    /**
+     * Forget video when value is null, check everytime when videos are updated.
+     * 
+     * @return void
+     */
+    public function updatedVideos ()
+    {
+        foreach ($this->videos as $key => $video) {
+            
+            if ($video == null) {
+                
+                $this->videos->forget($key);
+            }
+            
+        }
     }
     
     /**
@@ -82,13 +100,25 @@ class BandForm extends Component
     {
         // Validate input data.
         $this->validate();
-        
-        foreach ($this->videos as $key => $video) {
 
-            Video::find($video)
-                ? null
-                : $this->createNewVideo($video);
+        // Save band.
+        $this->band->save();
+
+        // For every video, make a new video.
+        foreach ($this->videos as $video) {
+        
+            if (!Video::find($video)) {
+
+                Video::create([
+                    'id' => $video,
+                    'url' => $video
+                ]);
+            }
+            
         }
+        
+        // Sync attached videos.
+        $this->band->videos()->sync($this->videos);
 
         // Save image if it does not exist.
         if (!Storage::disk('photos')->exists($this->logo)) {
@@ -125,20 +155,6 @@ class BandForm extends Component
             'biography' => null,
             'logo' => null
         ]);
-    }
-
-    /**
-     * Create new videos.
-     * 
-     * @return void
-     */
-    private function createNewVideo ($url)
-    {
-        $video = Video::create([
-            'url' => $url
-        ]);
-
-        $this->band->videos()->attach($video);
     }
 
     /**

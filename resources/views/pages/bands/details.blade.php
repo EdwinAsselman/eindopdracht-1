@@ -3,9 +3,24 @@
         <div class="flex gap-4">
             <div class="inline bg-no-repeat bg-cover rounded-full bg-center border-2 w-14 h-14" style="background-image: url({{ url( '/storage/photos/' . $band->logo) }});"></div>
 
-            <h2 class="py-4 font-semibold text-xl text-gray-800 dark:text-white leading-tight">
-                {{ $band->name }}
-            </h2>
+            <div class="flex-col">
+                <h2 class="pt-1 font-semibold text-xl text-gray-800 dark:text-white leading-tight">
+                    {{ $band->name }}
+                </h2>
+
+                <div>
+                    <span class="text-gray-800 dark:text-gray-300">Beheert door:</span>
+                    @forelse( $band->users as $user )
+                        
+                        <a href="{{ route('user.details', [ 'userId' => $user->id ]) }}" target="_blank" class="text-indigo-500">{{ $user->name }}</a>
+
+                    @empty
+
+                        <span class="text-gray-800 dark:text-gray-300">niemand</span>
+
+                    @endforelse
+                </div>
+            </div>
             @auth
                 <span class="flex py-4">
                     <a href="{{ route('band.edit', [ 'bandId' => $band->id ]) }}">

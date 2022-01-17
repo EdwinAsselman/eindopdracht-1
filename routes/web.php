@@ -8,6 +8,10 @@ use App\Http\Controllers\Bands\EditBandController;
 use App\Http\Controllers\Bands\CreateBandController;
 use App\Http\Controllers\Bands\BandController;
 
+/** USER CONTROLLERS */
+use App\Http\Controllers\Users\UsersController;
+use App\Http\Controllers\Users\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,5 +57,18 @@ Route::prefix('/bands')->group(function () {
         });
         
     });
+
+});
+
+// USERS
+Route::prefix('/users')->group(function () {
+
+    // Render the list for users.
+    Route::get('/', [ UsersController::class, 'render' ])
+        ->name('users');
+
+    // Render the details for a user.
+    Route::get('{userId}/details', [ UserController::class, 'render' ])
+        ->name('user.details');
 
 });

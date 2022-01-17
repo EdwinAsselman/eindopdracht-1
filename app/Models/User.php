@@ -58,4 +58,24 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Format date user joined to EU users.
+     * 
+     * @return string
+     */
+    public function getJoinedAttribute ()
+    {
+        return date('d-m-Y', strtotime($this->created_at));
+    }
+
+     /**
+     * Get the bands associated to this user.
+     * 
+     * @return Collection
+     */
+    public function bands ()
+    {
+        return $this->belongsToMany(Band::class);
+    }
 }

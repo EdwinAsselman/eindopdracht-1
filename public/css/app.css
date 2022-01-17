@@ -1106,8 +1106,23 @@ select {
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
+.col-span-5 {
+	grid-column: span 5 / span 5;
+}
 .col-span-1 {
 	grid-column: span 1 / span 1;
+}
+.col-start-2 {
+	grid-column-start: 2;
+}
+.col-start-3 {
+	grid-column-start: 3;
+}
+.col-end-2 {
+	grid-column-end: 2;
+}
+.m-4 {
+	margin: 1rem;
 }
 .mx-auto {
 	margin-left: auto;
@@ -1781,6 +1796,10 @@ select {
 	font-size: 1.25rem;
 	line-height: 1.75rem;
 }
+.text-3xl {
+	font-size: 1.875rem;
+	line-height: 2.25rem;
+}
 .font-medium {
 	font-weight: 500;
 }
@@ -2262,6 +2281,14 @@ select {
 
 	.sm\:col-span-4 {
 		grid-column: span 4 / span 4;
+	}
+
+	.sm\:col-span-5 {
+		grid-column: span 5 / span 5;
+	}
+
+	.sm\:col-span-2 {
+		grid-column: span 2 / span 2;
 	}
 
 	.sm\:mx-0 {

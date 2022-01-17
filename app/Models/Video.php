@@ -9,7 +9,7 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['url'];
+    protected $fillable = ['id', 'url'];
 
     public $timestamps = false;
 
@@ -18,10 +18,10 @@ class Video extends Model
      *
      * @var string
      */
-    protected $table = 'youtube_videos';
+    protected $table = 'videos';
 
     public function bands ()
     {
-        return $this->belongsToMany(Band::class, 'band_video', 'youtube_video_id', 'band_id');
+        return $this->belongsToMany(Band::class);
     }
 }

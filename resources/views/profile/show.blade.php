@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-white leading-tight">
-            {{ __('Profile') }}
+            {{ __('Profiel') }}
         </h2>
     </x-slot>
 
@@ -12,6 +12,11 @@
 
                 <x-jet-section-border />
             @endif
+
+            <!-- CONNECTED BANDS FROM USER. -->
+            @livewire('profile.update-bands-from-user')
+
+            <x-jet-section-border />
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                 <div class="mt-10 sm:mt-0">

@@ -1,24 +1,24 @@
 <x-jet-action-section>
     <x-slot name="title">
-        {{ __('Two Factor Authentication') }}
+        {{ __('Twee Factor Authenticatie') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Add additional security to your account using two factor authentication.') }}
+        {{ __('Een extra optionele beveiligings optie voor een extra validatie elke wanneer u inlogt.') }}
     </x-slot>
 
     <x-slot name="content">
         <h3 class="text-lg font-medium text-gray-900 dark:text-white">
             @if ($this->enabled)
-                {{ __('You have enabled two factor authentication.') }}
+                {{ __('Twee Factor Authenticatie staat aan.') }}
             @else
-                {{ __('You have not enabled two factor authentication.') }}
+                {{ __('Twee Factor Authenticatie staat niet aan.') }}
             @endif
         </h3>
 
         <div class="mt-3 max-w-xl text-sm text-gray-600 dark:text-white">
             <p>
-                {{ __('When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone\'s Google Authenticator application.') }}
+                {{ __('Wanneer verificatie met twee factoren is ingeschakeld, wordt u tijdens de verificatie gevraagd om een veilig, willekeurig token. U kunt dit token ophalen uit de Google Authenticator-applicatie van uw telefoon.') }}
             </p>
         </div>
 
@@ -26,7 +26,7 @@
             @if ($showingQrCode)
                 <div class="mt-4 max-w-xl text-sm text-gray-600 dark:text-white">
                     <p class="font-semibold">
-                        {{ __('Two factor authentication is now enabled. Scan the following QR code using your phone\'s authenticator application.') }}
+                        {{ __('Twee factor authenticatie is nu ingeschakeld. Scan de volgende QR-code met de authenticatietoepassing van uw telefoon.') }}
                     </p>
                 </div>
 
@@ -38,7 +38,7 @@
             @if ($showingRecoveryCodes)
                 <div class="mt-4 max-w-xl text-sm text-gray-600 dark:text-white">
                     <p class="font-semibold">
-                        {{ __('Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.') }}
+                        {{ __('Bewaar deze herstelcodes in een veilige wachtwoordmanager. Ze kunnen worden gebruikt om de toegang tot uw account te herstellen als uw twee-factor authenticatie-apparaat verloren gaat.') }}
                     </p>
                 </div>
 
@@ -54,27 +54,27 @@
             @if (! $this->enabled)
                 <x-jet-confirms-password wire:then="enableTwoFactorAuthentication">
                     <x-jet-button type="button" wire:loading.attr="disabled">
-                        {{ __('Enable') }}
+                        {{ __('Zet aan') }}
                     </x-jet-button>
                 </x-jet-confirms-password>
             @else
                 @if ($showingRecoveryCodes)
                     <x-jet-confirms-password wire:then="regenerateRecoveryCodes">
                         <x-jet-secondary-button class="mr-3">
-                            {{ __('Regenerate Recovery Codes') }}
+                            {{ __('Hergenereer Herstel Codes') }}
                         </x-jet-secondary-button>
                     </x-jet-confirms-password>
                 @else
                     <x-jet-confirms-password wire:then="showRecoveryCodes">
                         <x-jet-secondary-button class="mr-3">
-                            {{ __('Show Recovery Codes') }}
+                            {{ __('Toon Herstel Codes') }}
                         </x-jet-secondary-button>
                     </x-jet-confirms-password>
                 @endif
 
                 <x-jet-confirms-password wire:then="disableTwoFactorAuthentication">
                     <x-jet-danger-button wire:loading.attr="disabled">
-                        {{ __('Disable') }}
+                        {{ __('Zet uit') }}
                     </x-jet-danger-button>
                 </x-jet-confirms-password>
             @endif

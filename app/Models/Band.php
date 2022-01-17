@@ -19,8 +19,23 @@ class Band extends Model
      */
     protected $guarded = [];
 
+    /**
+     * Get the videos associated to this band.
+     * 
+     * @return Collection
+     */
     public function videos ()
     {
-        return $this->belongsToMany(Video::class, 'band_video', 'band_id', 'youtube_video_id');
+        return $this->belongsToMany(Video::class);
+    }
+
+    /**
+     * Get the users associated to this band.
+     * 
+     * @return Collection
+     */
+    public function users ()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

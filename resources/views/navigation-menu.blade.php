@@ -15,6 +15,10 @@
                     <x-jet-nav-link href="{{ route('bands') }}" :active="str_contains(Route::currentRouteName(), 'band')">
                         {{ __('Bands') }}
                     </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('users') }}" :active="str_contains(Route::currentRouteName(), 'user')">
+                        {{ __('Gebruikers') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -45,11 +49,11 @@
                             <x-slot name="content">
                                 <!-- Account Management -->
                                 <div class="block px-4 py-2 text-xs text-gray-400 dark:bg-gray-800 dark:text-white">
-                                    {{ __('Manage Account') }}
+                                    {{ __('Account') }}
                                 </div>
 
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Profile') }}
+                                    {{ __('Profiel') }}
                                 </x-jet-dropdown-link>
 
                                 <div class="border-t border-gray-100 dark:border-gray-800"></div>
@@ -61,7 +65,7 @@
                                     <x-jet-dropdown-link href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                     this.closest('form').submit();">
-                                        {{ __('Log Out') }}
+                                        {{ __('Uitloggen') }}
                                     </x-jet-dropdown-link>
                                 </form>
                             </x-slot>
